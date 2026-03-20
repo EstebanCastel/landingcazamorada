@@ -9,9 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
 const benefits = [
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6FF33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
-    title: "24 lanzamientos exclusivos al año",
-    desc: "Accede a proyectos nuevos en lista cero. Compra hasta un 35% por debajo del precio de entrega.",
-    highlight: "35% descuento",
+    title: "Lanzamientos exclusivos cada mes",
+    desc: "Accede a proyectos nuevos antes que nadie con precios preferenciales y condiciones especiales de preventa.",
+    highlight: "Lista cero",
   },
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6FF33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>,
@@ -21,9 +21,9 @@ const benefits = [
   },
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6FF33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
-    title: "Crédito hipotecario progresivo",
-    desc: "Descuentos que crecen: 1% en tu primera compra, 1.5% en la segunda, 2% en adelante.",
-    highlight: "Hasta 2%",
+    title: "Descuentos exclusivos en crédito",
+    desc: "Tasas preferenciales en tus créditos hipotecarios que mejoran a medida que creces con nosotros.",
+    highlight: "Tasas preferentes",
   },
   {
     icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C6FF33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,

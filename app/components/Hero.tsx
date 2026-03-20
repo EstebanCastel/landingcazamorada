@@ -43,17 +43,17 @@ export default function Hero() {
 
           <h1 className="hero__title">
             Invierte en inmuebles<br />
-            <span className="gradient-text">con ventaja.</span>
+            <span className="gradient-text">con descuento.</span>
           </h1>
 
           <p className="hero__subtitle">
             Únete al círculo de inversionistas inmobiliarios más grande de LATAM.
-            Accede a oportunidades exclusivas, descuentos de hasta 35% y
+            Accede a oportunidades exclusivas, descuentos de hasta 30% y
             acompañamiento experto en cada inversión.
           </p>
 
           <div className="hero__actions">
-            <a href="#membresia" className="btn-primary">
+            <a href="#aplicar" className="btn-primary">
               Aplica para ser miembro
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
@@ -70,14 +70,12 @@ export default function Hero() {
           </div>
 
           <div className="hero__video">
-            <div className="hero__video-inner">
-              <div className="hero__play-btn">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="#C6FF33">
-                  <polygon points="8 5 20 12 8 19" />
-                </svg>
-              </div>
-              <p className="hero__video-label">Video demo próximamente</p>
-            </div>
+            <video
+              className="hero__video-player"
+              src="/demo.mp4"
+              controls
+              playsInline
+            />
             <div className="hero__video-corners">
               <div className="hero__corner hero__corner--tl" />
               <div className="hero__corner hero__corner--tr" />

@@ -7,10 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { value: "30,000+", label: "Inmuebles analizados al año" },
-  { value: "35%", label: "Descuento en preventas" },
+  { value: "100,000+", label: "Inmuebles analizados al año" },
+  { value: "30%", label: "Descuento en preventas" },
   { value: "50+", label: "Lanzamientos exclusivos al año" },
-  { value: "$500M+", label: "En transacciones facilitadas" },
+  { value: "$3.4B+", label: "En transacciones facilitadas" },
 ];
 
 export default function SocialProof() {

@@ -80,8 +80,8 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <a href="#" className="pricing__cta">
-                Aplica para ser miembro
+              <a href="#aplicar" className="pricing__cta">
+                Reserva tu cupo
               </a>
 
               <p className="pricing__guarantee">

@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function LeadForm() {
   const ref = useRef<HTMLElement>(null);
-  const [form, setForm] = useState({ nombre: "", email: "", telefono: "" });
+  const [form, setForm] = useState({ nombre: "", email: "", telefono: "", countryCode: "+57" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -44,7 +44,7 @@ export default function LeadForm() {
         // Fallback: simulate success when Supabase not configured
         console.log("Lead (Supabase not configured):", form);
         setStatus("success");
-        setForm({ nombre: "", email: "", telefono: "" });
+        setForm({ nombre: "", email: "", telefono: "", countryCode: "+57" });
         return;
       }
 
@@ -52,14 +52,14 @@ export default function LeadForm() {
         {
           nombre: form.nombre.trim(),
           email: form.email.trim(),
-          telefono: form.telefono.trim(),
+          telefono: `${form.countryCode} ${form.telefono.trim()}`,
         },
       ]);
 
       if (error) throw error;
 
       setStatus("success");
-      setForm({ nombre: "", email: "", telefono: "" });
+      setForm({ nombre: "", email: "", telefono: "", countryCode: "+57" });
     } catch {
       setErrorMsg("Hubo un error al enviar. Intenta de nuevo.");
       setStatus("error");
@@ -118,13 +118,43 @@ export default function LeadForm() {
               </div>
               <div className="lead-form__field">
                 <label htmlFor="telefono">Teléfono</label>
-                <input
-                  id="telefono"
-                  type="tel"
-                  placeholder="+57 300 000 0000"
-                  value={form.telefono}
-                  onChange={(e) => setForm({ ...form, telefono: e.target.value })}
-                />
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <select
+                    value={form.countryCode}
+                    onChange={(e) => setForm({ ...form, countryCode: e.target.value })}
+                    className="lead-form__country-select"
+                    style={{
+                      width: "120px",
+                      padding: "0.875rem 0.5rem",
+                      borderRadius: "12px",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      background: "rgba(255,255,255,0.04)",
+                      color: "#fff",
+                      fontSize: "0.9rem",
+                      cursor: "pointer",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <option value="+57">🇨🇴 +57</option>
+                    <option value="+52">🇲🇽 +52</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+56">🇨🇱 +56</option>
+                    <option value="+51">🇵🇪 +51</option>
+                    <option value="+54">🇦🇷 +54</option>
+                    <option value="+593">🇪🇨 +593</option>
+                    <option value="+507">🇵🇦 +507</option>
+                    <option value="+506">🇨🇷 +506</option>
+                    <option value="+58">🇻🇪 +58</option>
+                  </select>
+                  <input
+                    id="telefono"
+                    type="tel"
+                    placeholder="300 000 0000"
+                    value={form.telefono}
+                    onChange={(e) => setForm({ ...form, telefono: e.target.value })}
+                    style={{ flex: 1 }}
+                  />
+                </div>
               </div>
 
               {errorMsg && <p className="lead-form__error">{errorMsg}</p>}

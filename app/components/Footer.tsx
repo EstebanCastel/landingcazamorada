@@ -26,13 +26,12 @@ export default function Footer() {
   return (
     <footer ref={ref} className="footer">
       <div className="container">
-        {/* Main grid - 4 columns */}
+        {/* Main grid - 3 columns */}
         <div className="footer__grid">
-          {/* Col 1: Logo & description */}
+          {/* Col 1: Brand */}
           <div className="footer__brand">
             <div className="footer__logo">
-              <div className="footer__logo-icon">CM</div>
-              <div className="footer__logo-text">CazaMorada</div>
+              <span style={{ fontSize: "1.25rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>CazaMorada</span>
             </div>
             <p className="footer__desc">
               El círculo de inversionistas inmobiliarios más grande de LATAM.
@@ -47,7 +46,7 @@ export default function Footer() {
               <li><a href="#">Inicio</a></li>
               <li><a href="#beneficios">Beneficios</a></li>
               <li><a href="#como-funciona">Cómo funciona</a></li>
-              <li><a href="#membresia">Membresía</a></li>
+              <li><a href="#aplicar">Reserva tu cupo</a></li>
             </ul>
           </div>
 
@@ -60,20 +59,6 @@ export default function Footer() {
               <li><a href="#faq">Preguntas frecuentes</a></li>
               <li><a href="#aplicar">Contacto</a></li>
             </ul>
-          </div>
-
-          {/* Col 4: Respaldado por */}
-          <div className="footer__col">
-            <h4 className="footer__col-title">Respaldado por</h4>
-            <div className="footer__backed">
-              <div className="footer__backed-badge">
-                <div className="footer__backed-icon">H</div>
-                <span>Habi</span>
-              </div>
-              <p className="footer__backed-desc">
-                Respaldado por la proptech más grande de Colombia y México.
-              </p>
-            </div>
           </div>
         </div>
 
@@ -103,9 +88,15 @@ export default function Footer() {
             </a>
           </div>
 
-          <p className="footer__copy">
-            &copy; {new Date().getFullYear()} CazaMorada. Todos los derechos reservados.
-          </p>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+            <p className="footer__copy">
+              &copy; {new Date().getFullYear()} CazaMorada. Todos los derechos reservados.
+            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", opacity: 0.5 }}>
+              <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.6)" }}>Powered by</span>
+              <img src="/habilogo.jpg" alt="Habi" style={{ height: "20px", borderRadius: "4px", opacity: 0.8 }} />
+            </div>
+          </div>
         </div>
 
         {/* Big decorative logo */}

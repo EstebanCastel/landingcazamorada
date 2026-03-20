@@ -164,30 +164,55 @@ img {
   gap: 10px;
 }
 
-.navbar__logo-icon {
-  width: 36px;
-  height: 36px;
+/* Logo icon — replicates demo app icon exactly */
+.logo-icon {
+  position: relative;
+  height: 38px;
+  padding: 0 14px;
   border-radius: 10px;
-  background: var(--purple);
+  background: linear-gradient(160deg, #9B59EB 0%, #7D39EB 40%, #5B21B6 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.02em;
+  overflow: hidden;
   transition: var(--transition);
 }
 
-.navbar__logo:hover .navbar__logo-icon {
-  box-shadow: var(--shadow-glow-purple);
+.navbar__logo:hover .logo-icon {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.1),
+    var(--shadow-glow-purple);
 }
 
-.navbar__logo-text {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.logo-icon__shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.logo-icon__text {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 800;
   color: var(--white);
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
 }
 
 .navbar__links {
@@ -501,49 +526,11 @@ img {
   box-shadow: var(--shadow-glow-purple);
 }
 
-.hero__video-inner {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #111 0%, #0a0a0a 50%, #111 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.hero__video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: var(--radius-xl);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-
-.hero__play-btn {
-  position: relative;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--purple);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition);
-}
-
-.hero__play-btn::before {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 2px solid var(--lime);
-  opacity: 0.3;
-  animation: pulse-ring 2s ease-out infinite;
-}
-
-@keyframes pulse-ring {
-  0% { transform: scale(1); opacity: 0.3; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-.hero__video-label {
-  color: var(--gray-600);
-  font-size: 14px;
 }
 
 .hero__video-corners {
@@ -1514,7 +1501,7 @@ img {
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr;
   gap: 48px;
   margin-bottom: 60px;
 }
@@ -1528,25 +1515,6 @@ img {
   margin-bottom: 20px;
 }
 
-.footer__logo-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: var(--purple);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.02em;
-}
-
-.footer__logo-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--white);
-}
 
 .footer__desc {
   font-size: 14px;
@@ -1585,29 +1553,11 @@ img {
   gap: 12px;
 }
 
-.footer__backed-badge {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer__backed-icon {
-  width: 28px;
-  height: 28px;
+.footer__habi-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
   border-radius: 4px;
-  background: #1a1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--lime);
-}
-
-.footer__backed-badge span {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--white);
 }
 
 .footer__backed-desc {
@@ -1677,7 +1627,6 @@ img {
   font-size: clamp(64px, 12vw, 160px);
   font-weight: 800;
   color: var(--white);
-  opacity: 0.04;
   letter-spacing: -0.04em;
   line-height: 1;
 }
@@ -1685,8 +1634,8 @@ img {
 @media (max-width: 768px) {
   .footer { padding: 48px 0 32px; }
   .footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px 24px;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
   .footer__brand {
     grid-column: 1 / -1;
@@ -1698,4 +1647,292 @@ img {
   }
   .footer__big-logo { margin-top: 40px; padding-top: 32px; }
   .footer__big-logo-text { font-size: 48px; }
+}
+
+/* ============================================
+   ENHANCED MOBILE RESPONSIVE
+   ============================================ */
+
+/* -- Global mobile polish -- */
+@media (max-width: 480px) {
+  :root {
+    --section-padding-mobile: 60px 0;
+  }
+
+  .container { padding: 0 16px; }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    margin-bottom: 14px;
+  }
+}
+
+/* -- Hero mobile -- */
+@media (max-width: 480px) {
+  .hero {
+    padding: 120px 0 48px;
+    min-height: auto;
+  }
+
+  .hero__badges {
+    margin-bottom: 24px;
+    gap: 8px;
+  }
+
+  .hero__badge {
+    font-size: 11px;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+
+  .hero__title {
+    font-size: 34px;
+    margin-bottom: 20px;
+  }
+
+  .hero__subtitle {
+    font-size: 15px;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  .hero__actions {
+    margin-bottom: 40px;
+    gap: 12px;
+  }
+
+  .btn-primary {
+    font-size: 15px;
+    padding: 14px 28px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-secondary {
+    font-size: 14px;
+  }
+
+  .hero__video {
+    border-radius: var(--radius-lg);
+  }
+
+  .hero__video-corners { inset: 8px; }
+}
+
+/* -- Stats mobile -- */
+@media (max-width: 480px) {
+  .stats { padding: 36px 0; }
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+  .stats__value { font-size: 24px; }
+  .stats__label { font-size: 12px; }
+}
+
+/* -- Problem mobile -- */
+@media (max-width: 480px) {
+  .problem__card {
+    padding: 24px 20px;
+  }
+  .problem__card-title {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+  .problem__card-desc {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+/* -- Benefits mobile -- */
+@media (max-width: 480px) {
+  .benefit__card {
+    padding: 24px 20px;
+  }
+  .benefit__badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+  .benefit__icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 16px;
+  }
+  .benefit__title {
+    font-size: 16px;
+    padding-right: 0;
+    margin-bottom: 8px;
+  }
+  .benefit__desc {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
+
+/* -- How it works mobile -- */
+@media (max-width: 480px) {
+  .how__steps { gap: 28px; }
+  .how__step { gap: 16px; }
+  .how__step-number {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .how__line { left: 22px; }
+  .how__step-content {
+    padding: 20px 16px;
+  }
+  .how__step-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+  }
+  .how__step-title { font-size: 17px; }
+  .how__step-desc { font-size: 14px; }
+}
+
+/* -- Pricing mobile -- */
+@media (max-width: 480px) {
+  .pricing__card {
+    padding: 36px 20px;
+  }
+  .pricing__plan-name { font-size: 20px; }
+  .pricing__plan-desc { font-size: 14px; margin-bottom: 28px; }
+  .pricing__price { margin-bottom: 28px; }
+  .pricing__price-amount { font-size: 52px; }
+  .pricing__features { gap: 12px; margin-bottom: 32px; }
+  .pricing__feature-text { font-size: 13px; }
+  .pricing__cta {
+    font-size: 15px;
+    padding: 16px 24px;
+  }
+  .pricing__trust {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .pricing__trust-item { font-size: 13px; }
+}
+
+/* -- FAQ mobile -- */
+@media (max-width: 480px) {
+  .faq__question {
+    padding: 16px 16px;
+    font-size: 14px;
+    gap: 12px;
+  }
+  .faq__answer-inner {
+    padding: 0 16px 16px;
+    font-size: 13px;
+  }
+}
+
+/* -- Final CTA mobile -- */
+@media (max-width: 480px) {
+  .final-cta__card {
+    padding: 40px 16px;
+    border-radius: var(--radius-lg);
+  }
+  .final-cta__eyebrow {
+    font-size: 11px;
+    padding: 5px 14px;
+    margin-bottom: 16px;
+  }
+  .final-cta__title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+  .final-cta__desc {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .final-cta__urgency {
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+  .final-cta__urgency-item {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .final-cta__urgency-text { font-size: 12px; }
+  .btn-primary--large {
+    font-size: 15px;
+    padding: 16px 28px;
+    width: 100%;
+    justify-content: center;
+  }
+  .final-cta__social-proof {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .final-cta__social-text { font-size: 12px; }
+}
+
+/* -- Lead form mobile -- */
+@media (max-width: 480px) {
+  .lead-form__header { margin-bottom: 36px; }
+  .lead-form__card {
+    padding: 28px 18px;
+    border-radius: var(--radius-lg);
+  }
+  .lead-form__form { gap: 16px; }
+  .lead-form__field label { font-size: 13px; }
+  .lead-form__field input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .lead-form__submit {
+    font-size: 15px;
+    padding: 14px;
+  }
+  .lead-form__disclaimer { font-size: 11px; }
+  .lead-form__country-select {
+    width: 100px !important;
+    padding: 0.75rem 0.4rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* -- Footer small mobile -- */
+@media (max-width: 480px) {
+  .footer__desc { font-size: 13px; }
+  .footer__col-title { font-size: 13px; margin-bottom: 14px; }
+  .footer__col-list { gap: 10px; }
+  .footer__col-list a { font-size: 13px; }
+  .footer__copy { font-size: 12px; }
+  .footer__big-logo-text { font-size: 36px; }
+}
+
+/* -- Touch-friendly tap targets -- */
+@media (max-width: 768px) {
+  .navbar__hamburger {
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .faq__question { min-height: 56px; }
+  .footer__social {
+    width: 44px;
+    height: 44px;
+  }
 }
