@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function LeadForm() {
   const ref = useRef<HTMLElement>(null);
-  const [form, setForm] = useState({ nombre: "", email: "", telefono: "", countryCode: "+57" });
+  const [form, setForm] = useState({ nombre: "", apellidos: "", email: "", telefono: "", countryCode: "+57" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -32,7 +32,7 @@ export default function LeadForm() {
     setStatus("loading");
     setErrorMsg("");
 
-    if (!form.nombre.trim() || !form.email.trim() || !form.telefono.trim()) {
+    if (!form.nombre.trim() || !form.apellidos.trim() || !form.email.trim() || !form.telefono.trim()) {
       setErrorMsg("Todos los campos son obligatorios");
       setStatus("error");
       return;
@@ -44,13 +44,14 @@ export default function LeadForm() {
         // Fallback: simulate success when Supabase not configured
         console.log("Lead (Supabase not configured):", form);
         setStatus("success");
-        setForm({ nombre: "", email: "", telefono: "", countryCode: "+57" });
+        setForm({ nombre: "", apellidos: "", email: "", telefono: "", countryCode: "+57" });
         return;
       }
 
       const { error } = await supabase.from("leads").insert([
         {
           nombre: form.nombre.trim(),
+          apellidos: form.apellidos.trim(),
           email: form.email.trim(),
           telefono: `${form.countryCode} ${form.telefono.trim()}`,
         },
@@ -59,7 +60,7 @@ export default function LeadForm() {
       if (error) throw error;
 
       setStatus("success");
-      setForm({ nombre: "", email: "", telefono: "", countryCode: "+57" });
+      setForm({ nombre: "", apellidos: "", email: "", telefono: "", countryCode: "+57" });
     } catch {
       setErrorMsg("Hubo un error al enviar. Intenta de nuevo.");
       setStatus("error");
@@ -96,15 +97,27 @@ export default function LeadForm() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="lead-form__form">
-              <div className="lead-form__field">
-                <label htmlFor="nombre">Nombre completo</label>
-                <input
-                  id="nombre"
-                  type="text"
-                  placeholder="Tu nombre"
-                  value={form.nombre}
-                  onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-                />
+              <div className="lead-form__row">
+                <div className="lead-form__field">
+                  <label htmlFor="nombre">Nombre</label>
+                  <input
+                    id="nombre"
+                    type="text"
+                    placeholder="Tu nombre"
+                    value={form.nombre}
+                    onChange={(e) => setForm({ ...form, nombre: e.target.value })}
+                  />
+                </div>
+                <div className="lead-form__field">
+                  <label htmlFor="apellidos">Apellidos</label>
+                  <input
+                    id="apellidos"
+                    type="text"
+                    placeholder="Tus apellidos"
+                    value={form.apellidos}
+                    onChange={(e) => setForm({ ...form, apellidos: e.target.value })}
+                  />
+                </div>
               </div>
               <div className="lead-form__field">
                 <label htmlFor="email">Correo electrónico</label>
