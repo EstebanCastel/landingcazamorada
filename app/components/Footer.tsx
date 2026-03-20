@@ -92,9 +92,9 @@ export default function Footer() {
             <p className="footer__copy">
               &copy; {new Date().getFullYear()} CazaMorada. Todos los derechos reservados.
             </p>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", opacity: 0.5 }}>
-              <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.6)" }}>Powered by</span>
-              <img src="/habilogo.jpg" alt="Habi" style={{ height: "20px", borderRadius: "4px", opacity: 0.8 }} />
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.9)" }}>Powered by</span>
+              <img src="/logohabifinal.png" alt="Habi" style={{ height: "48px" }} />
             </div>
           </div>
         </div>
